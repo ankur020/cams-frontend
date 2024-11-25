@@ -10,14 +10,8 @@ import axios from "axios";
 import Loader from "@/components/common/Loader";
 import Image from "next/image";
 import { ToastError } from "@/services/toastNotification";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore from "swiper";
-import { Navigation } from "swiper/modules";
 import "swiper/css/bundle";
-import Buttons from "@/app/ui/buttons/page";
-import Link from "next/link";
 const SingleTeamPage = () => {
-  SwiperCore.use<any>(Navigation);
   const params = useParams<any>();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
