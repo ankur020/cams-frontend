@@ -61,7 +61,7 @@ const MyCarsPage = () => {
     <DefaultLayout>
       <Breadcrumb pageName="My Cars" />
 
-      {loading ? <Loader /> : <MyCarDisplay cars={carDetails} getAllcars={getAllCars} />}
+      {loading ? <Loader /> : <MyCarDisplay cars={carDetails} getAllCars={getAllCars} />}
     </DefaultLayout>
   );
 };

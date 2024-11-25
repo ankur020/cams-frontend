@@ -9,13 +9,12 @@ import axios from "axios";
 import Loader from "@/components/common/Loader";
 import Image from "next/image";
 import { ToastError } from "@/services/toastNotification";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore from "swiper";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import SwiperCore from "swiper";
 import { Navigation } from "swiper/modules";
 import "swiper/css/bundle";
 import Link from "next/link";
 const SingleTeamPage = () => {
-  SwiperCore.use<any>(Navigation);
   const params = useParams<any>();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -60,23 +59,20 @@ const SingleTeamPage = () => {
       ) : (
         <>
           <Breadcrumb pageName={`MyCars / ${carDetails.title ? carDetails?.title : "car"}`} />
-          <Link href={`${params.carId}/update`}  className="bg-yellow-500 text-white p-2 hover:cursor-pointer">Update Car</Link>
+          <Link href={`${params.carId}/update`} className="bg-yellow-500 text-white p-2 hover:cursor-pointer">Update Car</Link>
           <div className="text-2xl font-bold">{carDetails.title}</div>
-          <div className="mt-2">
+          <div className="mt-2 grid grid-cols-3 gap-2">
+            {carDetails.images?.map((image: any) => (
+              <div className="relative">
+                <img
+                  src={image} // Assuming these are URLs
+                  alt={`Car Image`}
+                  className="h-20 w-full rounded object-cover"
+                />
 
-            <Swiper navigation>
-              {carDetails.images?.map((url: any) => (
-                <SwiperSlide key={url}>
-                  <div
-                    className="h-[500px]"
-                    style={{
-                      background: `url(${url}) center no-repeat`,
-                      backgroundSize: "cover",
-                    }}
-                  ></div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+              </div>
+            ))}
+
           </div>
           <div className="mt-2">{carDetails.description}</div>
         </>
